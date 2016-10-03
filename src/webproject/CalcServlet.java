@@ -21,10 +21,19 @@ public class CalcServlet extends HttpServlet{
 
 		response.setContentType("text/html");
 		String operator = request.getParameter("operator");
+		String l1 = request.getParameter("liczba1");
+		String l2 = request.getParameter("liczba2");
 		
-		liczba1 = Double.parseDouble(request.getParameter("liczba1"));
-		liczba2 = Double.parseDouble(request.getParameter("liczba2"));
-	
+//		liczba1 = Double.parseDouble(request.getParameter("liczba1"));
+//		liczba2 = Double.parseDouble(request.getParameter("liczba2"));
+		
+		if (l1 == null || l2==null){
+			response.getWriter().println("<p>MISSING</p>");
+		}else{
+			liczba1 = Double.parseDouble(l1);
+			liczba2 = Double.parseDouble(l2);
+		}
+
 		// TODO: refactoring! Strategy
 		if(operator!=null){
 			if(operator.equals("-")){
