@@ -1,10 +1,11 @@
+package webproject;
 
-public class DivideNumbers implements Operations{
+public class MultiplyNumbers implements Operations{
 
 	@Override
 	public double calculate(double a, double b) {
 		// TODO Auto-generated method stub
-		return a/b;
+		return a*b;
 	}
 
 }

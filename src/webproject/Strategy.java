@@ -1,5 +1,6 @@
+package webproject;
 
-public class Strategy {
+public class Strategy{
 	public Operations operation;
 
 	public double calculate(double liczba1, double liczba2){
