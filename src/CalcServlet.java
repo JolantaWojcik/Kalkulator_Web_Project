@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/calc")
 public class CalcServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-
+	double wynik;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -19,20 +20,31 @@ public class CalcServlet extends HttpServlet{
 		String operator = request.getParameter("operator");
 
 		// TODO: refactoring! Strategy
-
-		double wynik = 0;
-
-		if ("+".equals(operator)) {
-			wynik = liczba1 + liczba2;
+		if(operator.equals("-")){
+			//gdyby bylo wiecej klas
+			//wynik = strategy.setOperationType(new SubstractNumbers());
+			Strategy s = new Strategy(new SubstractNumbers());
+			wynik = s.calculate(liczba1, liczba2);
 		}
-		else if ("-".equals(operator)) {
-			wynik = liczba1 - liczba2;
+		if(operator.equals("+")){
+			//gdyby bylo wiecej klas
+			//wynik = strategy.setOperationType(new SubstractNumbers());
+			Strategy s = new Strategy(new AddNumbers());
+			wynik = s.calculate(liczba1, liczba2);
 		}
-		else if ("*".equals(operator)) {
-			wynik = liczba1 * liczba2;
+		if(operator.equals("*")){
+			//gdyby bylo wiecej klas
+			//wynik = strategy.setOperationType(new SubstractNumbers());
+			Strategy s = new Strategy(new MultiplyNumbers());
+			wynik = s.calculate(liczba1, liczba2);
 		}
-		// ...
-
+		if(operator.equals("/")){
+			//gdyby bylo wiecej klas
+			//wynik = strategy.setOperationType(new SubstractNumbers());
+			Strategy s = new Strategy(new DivideNumbers());
+			wynik = s.calculate(liczba1, liczba2);
+		}
+		
 		response.setContentType("text/html");
 		response.getWriter().println("<b>Wynik to: " + wynik + "</b>");
 
